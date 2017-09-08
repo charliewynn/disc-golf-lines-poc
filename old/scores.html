@@ -1,0 +1,200 @@
+<html>
+<head>
+  <title>cWynn</title>
+  <script src="logincode/loginboxcontrol.js"></script>
+  <script type="text/javascript">
+  
+function loadContent()
+{
+  if (window.XMLHttpRequest) // code for IE7+, Firefox, Chrome, Opera, Safari
+  {
+    xmlhttp=new XMLHttpRequest();
+  }
+  else // code for IE6, IE5
+  {
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+  {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+      //login box width = 200
+      //one table width = 480
+      //lets give them 50 on each side so 580
+      var width = window.innerWidth - 200;
+      var tableCols = Math.floor(width/580);
+      
+      //need tableCols to be at least 1
+      tableCols = Math.max(tableCols, 1);
+      
+      var content = "<table border='0'><tr>";
+      for(var i=0; i<tableCols; ++i)
+        content += "<td valign='top'><div class='contentParent' style='margin: 0; vertical-align:top;' id='tables-"+i+"'></div></td>";
+      content += "</tr></table>";
+      document.getElementById("allContent").innerHTML = content;
+      
+      var result = xmlhttp.responseText;
+      planets = [];
+      result = result.split("&&^^%%$$");
+      for(r in result)
+      {
+        var shortestDiv = document.getElementById('tables-0');
+        var shortestDivHeight = shortestDiv.offsetHeight;
+        for(var i=0; i<tableCols; ++i)
+        {
+          if(shortestDivHeight > document.getElementById('tables-'+i).offsetHeight)
+          {
+            shortestDiv = document.getElementById('tables-'+i);
+            shortestDivHeight = shortestDiv.offsetHeight;
+          }
+        }
+        shortestDiv.innerHTML += result[r];
+      }
+      
+    }
+  }
+  xmlhttp.open("POST","gettables.php",true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send();
+}
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="indexstyle.css" media="screen" />
+</head>
+<body onLoad="loadLogin(); loadContent();"> 
+  <div class="floating-login" id="loginbox"></div>
+  <div align="center"><br>
+    <span class='l-1'>c</span>
+    <span class='l-2'>W</span>
+    <span class='l-3'>y</span>
+    <span class='l-4'>n</span>
+    <span class='l-5'>n</span>
+    <span class='l-6'>.</span>
+    <span class='l-7'>c</span>
+    <span class='l-8'>o</span>
+    <span class='l-9'>m</span>
+    <br>
+    <div id="allContent" align="center">Loading Content...
+    <br>
+    <table border="0"><tbody><tr><td valign="top"><div class="contentParent" style="margin: 0; vertical-align:top;" id="tables-0">
+	<table class="contentTable" id="rounded-corner" summary="Links">
+		<thead>
+			<tr>
+				<th colspan="3" class="top">Utilities</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+			<td colspan="3" class="rounded-bl">&nbsp;</td>
+			</tr>
+		</tfoot>
+		<tbody><tr onclick="window.location.href='/bounce'">
+						<td>Bounce Collision Example</td>
+						<td>Example of how to detect collision and react between a point and line segment</td>
+						<td><img width="40" src="/bounce/pic.png"></td></tr><tr onclick="window.location.href='http://www.cwynn.com/answers'">
+						<td>cWynn Answers</td>
+						<td>Very basic question/answer forum</td>
+						<td></td></tr><tr onclick="window.location.href='/distancecaddie'">
+						<td>Distance Caddie</td>
+						<td>Keep track of golf club average shot distance</td>
+						<td><img width="40" src="/distancecaddie/distcaddieimg.jpg"></td></tr><tr onclick="window.location.href='/gravity/designer'">
+						<td>Gravity Hero Level Designer</td>
+						<td>Build/Test Levels for Gravity Hero</td>
+						<td><img width="40" src="/gravity/pic.png"></td></tr><tr onclick="window.location.href='/spellingalphabetteacher'">
+						<td>Phonetic Alphabet Trainer</td>
+						<td>Trainer to learn the phonetic alphabet (Alpha, Bravo, Charlie, Delta....)</td>
+						<td><img width="40" src="/spellingalphabetteacher/alpha.png"></td></tr><tr onclick="window.location.href='/shoppingcartdemo'">
+						<td>Shopping Cart</td>
+						<td>Demo of a shopping cart</td>
+						<td></td></tr><tr onclick="window.location.href='http://cwynn.com/scorecard'">
+						<td>Scorecard</td>
+						<td>Simple multi-hole scorecard for golf</td>
+						<td></td></tr><tr onclick="window.location.href='/login'">
+						<td>cWynn Login</td>
+						<td>A php/mysql user login system. Example + Source Code</td>
+						<td></td></tr><tr onclick="window.location.href='/coindb'">
+						<td>CoinDB</td>
+						<td>Simple Coin database, nothing fancy; just needed something like this</td>
+						<td><img width="40" src="/coindb/penny.png"></td></tr><tr onclick="window.location.href='http://cwynn.com/calculator'">
+						<td>Calculator</td>
+						<td>Basic Javascript 4-function Calculator</td>
+						<td></td></tr><tr onclick="window.location.href='directory-tree'">
+						<td>Image Directory Viewer</td>
+						<td>Dynamic Image Directory parser and viewer</td>
+						<td></td></tr></tbody></table>
+	<table class="contentTable" id="rounded-corner" summary="Links">
+		<thead>
+			<tr>
+				<th colspan="3" class="top">Misc</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+			<td colspan="3" class="bottom">&nbsp;</td>
+			</tr>
+		</tfoot>
+		<tbody><tr onclick="window.location.href='http://www.cwynn.com/mute_on_shutdown'">
+						<td>Mute On Suspend</td>
+						<td>Mute your computer on hibernation/suspend. (Keep music/youtube videos from playing through speakers when you open your laptop lid back up when you bring your computer to class etc)</td>
+						<td></td></tr></tbody></table></div></td><td valign="top"><div class="contentParent" style="margin: 0; vertical-align:top;" id="tables-1">
+	<table class="contentTable" id="rounded-corner" summary="Links">
+		<thead>
+			<tr>
+				<th colspan="2" class="rounded-tl">Games</th>
+				<th class="rounded-tr"></th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+			<td colspan="3" class="rounded-bl">&nbsp;</td>
+			</tr>
+		</tfoot>
+		<tbody><tr onclick="window.location.href='/hamsterflight'">
+						<td>Hamster Flight</td>
+						<td>I was asked to make an html 5/javascript game for a job application, this is what I came up with</td>
+						<td><img width="40" src="/hamsterflight/power2.png"></td></tr><tr onclick="window.location.href='maze'">
+						<td>Maze</td>
+						<td>Play maze games and try the level designer</td>
+						<td><img width="40" src="maze/maze/maze.png"></td></tr><tr onclick="window.location.href='/gravity'">
+						<td>Gravity Hero</td>
+						<td>Physics based game</td>
+						<td><img width="40" src="/gravity/pic.png"></td></tr><tr onclick="window.location.href='http://cwynn.com/go'">
+						<td>Go!</td>
+						<td>Play Go (Baduk)</td>
+						<td><img width="40" src="go/go.png"></td></tr><tr onclick="window.location.href='http://cwynn.com/marbles/board.html'">
+						<td>Play Marbles</td>
+						<td>Play Marbles (aggravation) on the go</td>
+						<td><img width="40" src="marbles/marbles.png"></td></tr><tr onclick="window.location.href='lightsout'">
+						<td>Lights Out</td>
+						<td>Play Lights Out 3x3 and HEX</td>
+						<td><img width="40" src="lightsout/lightsouthex.png"></td></tr><tr onclick="window.location.href='/ants'">
+						<td>Ants</td>
+						<td>Ant farm simulation</td>
+						<td><img width="40" src="/ants/pic.png"></td></tr><tr onclick="window.location.href='http://cwynn.com/battleblimps/'">
+						<td>BattleBlimps (iOS app)</td>
+						<td>Information about Battle Blimps for iOS. Created By Charlie Wynn and Brett Marcott</td>
+						<td></td></tr></tbody></table>
+	<table class="contentTable" id="rounded-corner" summary="Links">
+		<thead>
+			<tr>
+				<th colspan="3" class="rounded-tl">Links</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+			<td colspan="3" class="rounded-bl">&nbsp;</td>
+			</tr>
+		</tfoot>
+		<tbody><tr onclick="window.location.href='http://xkcd.com'">
+						<td>xkcd</td>
+						<td>Link to xkcd webcomic</td>
+						<td><img width="40" src="images/xkcd.png"></td></tr><tr onclick="window.location.href='http://www.ou.edu/ouija/'">
+						<td>OU Juggling Club</td>
+						<td>Website for the OU juggling club</td>
+						<td><img width="40" src="images/jugglinglogo.gif"></td></tr></tbody></table></div></td></tr></tbody></table>
+            </div>
+    <br>
+    All content (unless otherwise specified) was created by Charlie Wynn
+  </div>
+</body>
+</html>
