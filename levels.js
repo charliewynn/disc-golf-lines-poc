@@ -60,8 +60,8 @@ var levels = [];
 levels[0] = [
   new Player(new Vector(0, 300), new Vector(78, 35), 5, 20),
   new Planet(new Vector(320, 200), 1, 1, false, false),
-  new Planet(new Vector(320, 200), 1, 100, false, true),
-  new Planet(new Vector(-100, -400), 1, 100, false, true),
+  new Planet(new Vector(100, -50), 1, 60, false, true),
+  new Planet(new Vector(-100, -400), 1, 70, false, true),
   new Planet(new Vector(0, -600), 5, 25, true, false),
 ];
 

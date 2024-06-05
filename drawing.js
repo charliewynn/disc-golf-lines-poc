@@ -186,10 +186,16 @@ function redraw() {
         newPlayer.updatePosition(true);
         newPlayer.updatePosition(true);
         newPlayer.applyDiscPhysics(
-          new Vector(-0.5 + 0.1 * fakePlayer, -0.5 + 0.1 * fakePlayer)
+          new Vector(
+            -0.5 + 0.1 * fakePlayer + (0.5 - Math.random()) * 2,
+            -0.5 + 0.1 * fakePlayer + (0.5 - Math.random()) * 2
+          )
         );
         newPlayer.applyDiscPhysics(
-          new Vector(-0.5 + 0.1 * fakePlayer, -0.5 + 0.1 * fakePlayer)
+          new Vector(
+            -0.5 + 0.1 * fakePlayer + (0.5 - Math.random()) * 2,
+            -0.5 + 0.1 * fakePlayer + (0.5 - Math.random()) * 2
+          )
         );
         drawRect(
           newPlayer.position.x,

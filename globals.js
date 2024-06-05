@@ -1,10 +1,10 @@
 var canvas;
 var context;
-var width  = window.innerWidth;
-var	height = window.innerHeight;
+var width = window.innerWidth;
+var height = window.innerHeight;
 
-var grav_const = .09;
-		
+var grav_const = 0.09;
+
 var player;
 
 var playing = false;
@@ -14,8 +14,7 @@ var currentLevel = 0;
 
 var breadCrumbsNDX = 0;
 var breadCrumbs = [];
-var breadCrumbsColorNDX = 0;
-
+var breadCrumbsColorNDX = 1;
 
 var breadCrumbsCanvases = [];
 var breadCrumbsImg = undefined;
@@ -32,7 +31,7 @@ var flying = false;
 var attempts = 0;
 var dragging = false;
 
-var touchPt = new Vector(0,0);
+var touchPt = new Vector(0, 0);
 
 var scaleX = 1;
 var scaleY = 1;

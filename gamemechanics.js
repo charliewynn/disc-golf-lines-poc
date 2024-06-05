@@ -174,6 +174,7 @@ function touchHandler(event) {
 }
 
 function breadCrumbsColor(ndx) {
+  ndx = ndx + 1;
   var red = parseInt(Math.sin(2.4 * ndx + 0) * 127 + 128);
   var grn = parseInt(Math.sin(2.4 * ndx + 2) * 127 + 128);
   var blu = parseInt(Math.sin(2.4 * ndx + 4) * 127 + 128);
@@ -287,7 +288,12 @@ function updateGame() {
   }
 
   if (flying) {
-    player.applyDiscPhysics();
+    player.applyDiscPhysics(
+      new Vector(
+        -0.5 + 0.1 * 1 + (0.5 - Math.random()) * 2,
+        -0.5 + 0.1 * 1 + (0.5 - Math.random()) * 2
+      )
+    );
     for (p in planets) player.applyGravity(planets[p]);
 
     if (
@@ -310,7 +316,9 @@ function updateGame() {
         player.radius + planets[p].radius
       ) {
         if (planets[p].isBonus) {
-          if (planets[p].isVisible) {
+          player.crashed = true;
+          flying = false;
+          if (planets[p].isVisible && false) {
             player.levelScore += 500;
             player.numBonuses++;
             planets[p].isVisible = false;
